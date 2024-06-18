@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista zadań</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet"  th:href="@{/main.css}">
+</head>
+<div th:replace="header-common :: header"></div>
+<body>
+<div class="container">
+
+    </br>
+    <h2>Lista zadań: </h2>
+    </br>
+    <h5>Wysoki priorytet</h5>
+    <div th:replace="fragments :: task-list(tasks=${tasksHigh})"></div>
+    </br>
+    <h5>Średni priorytet</h5>
+    <div th:replace="fragments :: task-list(tasks=${tasksMedium})"></div>
+    </br>
+    <h5>Niski priorytet</h5>
+    <div th:replace="fragments :: task-list(tasks=${tasksLow})"></div>
+    </br>
+    <a th:href="@{/add}">Dodaj nowe zadanie</a>
+    </br>
+    <a th:href="@{/archive}">Wykonane zadania</a>
+    </br></br>
+
+    <div th:replace="footer-common :: footer"></div>
+</div>
+
+</body>
+</html>

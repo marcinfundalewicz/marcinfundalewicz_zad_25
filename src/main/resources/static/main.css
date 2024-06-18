@@ -1,0 +1,28 @@
+.footer {
+    position:absolute;
+    left:0;
+    bottom:0;
+    height:27px;
+    width:100%;
+    background-color:dodgerblue;
+    text-align: center;
+}
+
+body {
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    background-position: center;
+    height: 120px;
+    background-color: dodgerblue;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista zadań</title>
+
+</head>
+<body>
+
+<ul class="list-group" th:fragment="task-list">
+    <li class="list-group-item" th:each="task : ${tasks}">
+        <form th:action="@{|/task/info/${task.id}|}" method="get">
+            <input type="hidden" name="taskId" th:value="${task.id}"/>
+            <input class="form-check-input me-1" type="checkbox" th:checked="${task.done}"
+                   id="firstCheckbox" onclick="this.form.submit()">
+            <label class="form-check-label" for="firstCheckbox" th:text="${task.getName()}"></label>
+            <a th:href="@{|/task/edit/${task.id}|}">Edycja zadania</a>
+        </form>
+    </li>
+</ul>
+</body>
+</html>

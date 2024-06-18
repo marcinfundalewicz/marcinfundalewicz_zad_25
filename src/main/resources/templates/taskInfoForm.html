@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Informacje o ukończonym zadaniu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/main.css}">
+</head>
+<div th:replace="header-common :: header"></div>
+<body>
+<div class="container">
+    <h3>Informacje o ukończonym zadaniu:</h3>
+    </br>
+
+    <h5 th:text="${task.name}"></h5>
+    </br>
+    <form th:action="@{|/task/save/${task.id}|}" method="post" th:object="${task}">
+        <input type="hidden" name="taskId" th:value="${task.id}"/>
+        <div class="form-outline">
+            <label class="form-label" for="duration">Czas trwania zadania w minutach:</label>
+            <input type="number" id="duration" class="form-control" th:field="*{duration}" step="1"/>
+        </div>
+        </br>
+        <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker"
+             inline="true">
+            <label for="example">Data ukończenia zadania</label>
+            <input placeholder="Wybierz datę" type="date" id="example" th:field="*{completionDate}" class="form-control"/>
+            <i class="fas fa-calendar input-prefix"></i>
+        </div>
+        </br>
+        <div class="col-12">
+            <button class="btn btn-primary" type="submit">Dodaj informacje o zadaniu</button>
+        </div>
+    </form>
+    </br>
+    <div th:replace="footer-common :: footer"></div>
+</div>
+</body>
+</html>
